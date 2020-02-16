@@ -8,6 +8,8 @@ import com.yakovburtsev.poller.Util.scheduleJob
 
 class MyStartServiceReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        scheduleJob(context)
+        if (intent.action == Intent.ACTION_BOOT_COMPLETED) {
+            scheduleJob(context)
+        }
     }
 }

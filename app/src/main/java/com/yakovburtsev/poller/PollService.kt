@@ -13,17 +13,18 @@ class PollService : IntentService("PollService") {
         var urlConnection: HttpURLConnection? = null
         try {
             urlConnection = url.openConnection() as HttpURLConnection?
-            //todo
-            println(urlConnection?.responseCode)
-            notifyUpdate()
+            val responseCode = urlConnection?.responseCode
+            if (responseCode != 200) {
+                notifyUpdate("Response code: $responseCode")
+            }
         } finally {
             urlConnection?.disconnect()
         }
     }
 
-    private fun notifyUpdate() {
+    private fun notifyUpdate(message: String) {
         val notifierIntent = Intent(this, MessageService::class.java)
-        notifierIntent.putExtra(EXTRA_MESSAGE, resources.getString(R.string.response))
+        notifierIntent.putExtra(EXTRA_MESSAGE, message)
         startService(notifierIntent)
     }
 

@@ -13,10 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun onClick(view: View?) {
-/*        val intent = Intent(this, PollService::class.java)
-        startService(intent)*/
-
-        scheduleJob(this);
+    fun onClick(view: View) {
+        scheduleJob(this)
     }
 }

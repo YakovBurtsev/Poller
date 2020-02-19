@@ -30,7 +30,7 @@ class MessageService : IntentService("MessageService") {
     private fun showText(text: String) {
         val builder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle(getString(R.string.question))
+            .setContentTitle(getString(R.string.button_text))
             .setContentText(text)
             .setVibrate(longArrayOf(0, 1000))
             .setAutoCancel(true)

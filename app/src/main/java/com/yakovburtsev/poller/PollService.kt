@@ -13,6 +13,8 @@ class PollService : IntentService("PollService") {
         var urlConnection: HttpURLConnection? = null
         try {
             urlConnection = url.openConnection() as HttpURLConnection?
+            //todo
+            println(urlConnection?.responseCode)
             notifyUpdate()
         } finally {
             urlConnection?.disconnect()
